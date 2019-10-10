@@ -5,6 +5,10 @@ import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 
 class MyApplication : DaggerApplication() {
-    override fun applicationInjector(): AndroidInjector<MyApplication> =
-        DaggerApplicationComponent.builder().application(this).build()
+    private val applicationComponent = DaggerApplicationComponent
+        .builder()
+        .application(this)
+        .build()
+
+    override fun applicationInjector(): AndroidInjector<MyApplication> = applicationComponent
 }

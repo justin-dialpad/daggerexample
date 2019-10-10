@@ -1,7 +1,6 @@
 package com.example.dagger_example.thing_feature
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -10,18 +9,17 @@ import com.example.dagger_example.ThingsViewModelFactory
 import com.example.dagger_example.thing_feature.domain.FeatureThingsRepository
 import com.example.dagger_example.thing_feature.presentation.MainViewModel
 import com.example.dagger_example.ui_common.SimpleDividerItemDecoration
-import dagger.android.AndroidInjection
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.list_content.*
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var featureThingsRepository: FeatureThingsRepository
 
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
